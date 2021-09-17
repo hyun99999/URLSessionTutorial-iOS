@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F8075E4E26F44906000E2083 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8075E4D26F44906000E2083 /* APIService.swift */; };
 		F820261C26F3767700662329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820261B26F3767700662329 /* AppDelegate.swift */; };
 		F820261E26F3767700662329 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820261D26F3767700662329 /* SceneDelegate.swift */; };
 		F820262026F3767700662329 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820261F26F3767700662329 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F8075E4D26F44906000E2083 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F820261826F3767700662329 /* URLSessionTutorial-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "URLSessionTutorial-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F820261B26F3767700662329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F820261D26F3767700662329 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F8075E4F26F4490A000E2083 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F820262926F3767900662329 /* Info.plist */,
+				F820262426F3767900662329 /* Assets.xcassets */,
+				F8075E5326F4493B000E2083 /* Storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F8075E5026F44911000E2083 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F820261B26F3767700662329 /* AppDelegate.swift */,
+				F820261D26F3767700662329 /* SceneDelegate.swift */,
+				F8075E5226F4492C000E2083 /* Network */,
+				F8075E5126F44924000E2083 /* ViewController */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F8075E5126F44924000E2083 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F820261F26F3767700662329 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F8075E5226F4492C000E2083 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F8075E4D26F44906000E2083 /* APIService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F8075E5326F4493B000E2083 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				F820262626F3767900662329 /* LaunchScreen.storyboard */,
+				F820262126F3767700662329 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		F820260F26F3767700662329 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +104,8 @@
 		F820261A26F3767700662329 /* URLSessionTutorial-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F820261B26F3767700662329 /* AppDelegate.swift */,
-				F820261D26F3767700662329 /* SceneDelegate.swift */,
-				F820261F26F3767700662329 /* ViewController.swift */,
-				F820262126F3767700662329 /* Main.storyboard */,
-				F820262426F3767900662329 /* Assets.xcassets */,
-				F820262626F3767900662329 /* LaunchScreen.storyboard */,
-				F820262926F3767900662329 /* Info.plist */,
+				F8075E5026F44911000E2083 /* Source */,
+				F8075E4F26F4490A000E2083 /* Resource */,
 			);
 			path = "URLSessionTutorial-iOS";
 			sourceTree = "<group>";
@@ -139,6 +182,7 @@
 			files = (
 				F820262026F3767700662329 /* ViewController.swift in Sources */,
 				F820261C26F3767700662329 /* AppDelegate.swift in Sources */,
+				F8075E4E26F44906000E2083 /* APIService.swift in Sources */,
 				F820261E26F3767700662329 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T8C9SSEX5G;
-				INFOPLIST_FILE = "URLSessionTutorial-iOS/Info.plist";
+				INFOPLIST_FILE = "URLSessionTutorial-iOS/Resource/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +351,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T8C9SSEX5G;
-				INFOPLIST_FILE = "URLSessionTutorial-iOS/Info.plist";
+				INFOPLIST_FILE = "URLSessionTutorial-iOS/Resource/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
