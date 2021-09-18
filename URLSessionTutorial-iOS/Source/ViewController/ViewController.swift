@@ -40,14 +40,22 @@ class ViewController: UIViewController {
             print(result)
         }
     }
+    
     @IBAction func postWithURLSessionUploadTask(_ sender: Any) {
         APIService.shared.requestPOSTWithURLSessionUploadTask(url: baseURL, parameters: parameters) { success, result in
             print(result)
         }
     }
+    
     @IBAction func postWithMultipartform(_ sender: Any) {
         guard let data = UIImage(systemName: "circle")?.pngData() else { return }
         APIService.shared.requestPOSTWithMultipartform(url: baseURL, parameters: parameters, data: data, filename: "img", mimeType: "image/png") { success, result in
+            print(result)
+        }
+    }
+    
+    @IBAction func getWithURLSessionDownloadTask(_ sender: Any) {
+        APIService.shared.requestGETWithURLSessionDownloadTask(url: baseURL) { success, result in
             print(result)
         }
     }

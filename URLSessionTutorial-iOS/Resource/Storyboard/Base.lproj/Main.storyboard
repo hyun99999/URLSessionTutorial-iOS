@@ -58,17 +58,26 @@
                                     <action selector="getWithHeader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qq1-vd-ZPP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRn-tE-C6c">
+                                <rect key="frame" x="87.666666666666686" y="647" width="215" height="30"/>
+                                <state key="normal" title="GET URLSessionDownloadTask"/>
+                                <connections>
+                                    <action selector="getWithURLSessionDownloadTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Akc-1I-F25"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HpP-hG-lPi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="B4C-wD-h23"/>
                             <constraint firstItem="Lst-e8-fow" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F2h-Ny-N5U"/>
+                            <constraint firstItem="sRn-tE-C6c" firstAttribute="top" secondItem="djZ-E4-Fxp" secondAttribute="bottom" constant="50" id="F48-G6-TPr"/>
                             <constraint firstItem="e8d-ka-DA2" firstAttribute="top" secondItem="w1H-EI-B9P" secondAttribute="bottom" constant="50" id="GZI-Ys-adB"/>
                             <constraint firstItem="e8d-ka-DA2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100.66666666666669" id="OYk-Dv-gTh"/>
                             <constraint firstItem="Lst-e8-fow" firstAttribute="top" secondItem="e8d-ka-DA2" secondAttribute="bottom" constant="50" id="Pxr-Uy-InE"/>
                             <constraint firstItem="w1H-EI-B9P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QQm-TB-3el"/>
                             <constraint firstItem="djZ-E4-Fxp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sdl-ma-U9i"/>
+                            <constraint firstItem="sRn-tE-C6c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UpS-Ju-Wg5"/>
                             <constraint firstItem="HpP-hG-lPi" firstAttribute="top" secondItem="Lst-e8-fow" secondAttribute="bottom" constant="50" id="Vt2-Wl-A33"/>
                             <constraint firstItem="HpP-hG-lPi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WBH-dZ-VhQ"/>
                             <constraint firstItem="djZ-E4-Fxp" firstAttribute="top" secondItem="QeL-6e-pJ6" secondAttribute="bottom" constant="50" id="Yzu-6j-3Dh"/>

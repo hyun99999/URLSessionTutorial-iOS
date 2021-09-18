@@ -270,8 +270,30 @@ class APIService {
         }.resume()
     }
     
-    // POST - Image 수신
-    func requestPOSTWithURLSessionDownloadTask(url: String, parameters: [String : String], completionHandler: @escaping (Bool, Any) -> Void) {
+    // GET - Image 수신
+    func requestGETWithURLSessionDownloadTask(url: String, completionHandler: @escaping (Bool, Any) -> Void) {
+        guard let url = URL(string: url) else {
+            print("Error: cannot create URL")
+            return
+        }
         
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let defaultSession = URLSession(configuration: .default)
+        
+        defaultSession.downloadTask(with: request) { (location: URL?, response: URLResponse?, error: Error?) in
+            guard error == nil else {
+                print("Error occur: error calling POST - \(String(describing: error))")
+                return
+            }
+
+            guard let location = location, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                return
+            }
+            
+            completionHandler(true, location)
+        }.resume()
     }
 }
