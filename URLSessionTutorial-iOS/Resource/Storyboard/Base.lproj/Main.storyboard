@@ -1,24 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="URLSessionTutorial_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djZ-E4-Fxp">
+                                <rect key="frame" x="126.66666666666669" y="567" width="137" height="30"/>
+                                <state key="normal" title="POST Multipartform"/>
+                                <connections>
+                                    <action selector="postWithMultipartform:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WZ8-R8-c2X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-6e-pJ6">
+                                <rect key="frame" x="92" y="487" width="206" height="30"/>
+                                <state key="normal" title="POST URLSessionUploadTask"/>
+                                <connections>
+                                    <action selector="postWithURLSessionUploadTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oCV-7d-Rld"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpP-hG-lPi">
+                                <rect key="frame" x="101" y="407" width="188" height="30"/>
+                                <state key="normal" title="POST URLSessionDataTask"/>
+                                <connections>
+                                    <action selector="postWithURLSessionDataTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D78-57-nfG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8d-ka-DA2">
+                                <rect key="frame" x="100.66666666666667" y="247" width="188.66666666666663" height="30"/>
+                                <state key="normal" title="GET  With Query parameter"/>
+                                <connections>
+                                    <action selector="getWithQueryParameter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ghq-jH-WX0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1H-EI-B9P">
+                                <rect key="frame" x="180" y="167" width="30" height="30"/>
+                                <state key="normal" title="GET"/>
+                                <connections>
+                                    <action selector="getWithURL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="71p-ld-t5k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lst-e8-fow">
+                                <rect key="frame" x="115.66666666666669" y="327" width="159" height="30"/>
+                                <state key="normal" title="GET With HTTP header"/>
+                                <connections>
+                                    <action selector="getWithHeader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qq1-vd-ZPP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HpP-hG-lPi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="B4C-wD-h23"/>
+                            <constraint firstItem="Lst-e8-fow" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F2h-Ny-N5U"/>
+                            <constraint firstItem="e8d-ka-DA2" firstAttribute="top" secondItem="w1H-EI-B9P" secondAttribute="bottom" constant="50" id="GZI-Ys-adB"/>
+                            <constraint firstItem="e8d-ka-DA2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100.66666666666669" id="OYk-Dv-gTh"/>
+                            <constraint firstItem="Lst-e8-fow" firstAttribute="top" secondItem="e8d-ka-DA2" secondAttribute="bottom" constant="50" id="Pxr-Uy-InE"/>
+                            <constraint firstItem="w1H-EI-B9P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QQm-TB-3el"/>
+                            <constraint firstItem="djZ-E4-Fxp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sdl-ma-U9i"/>
+                            <constraint firstItem="HpP-hG-lPi" firstAttribute="top" secondItem="Lst-e8-fow" secondAttribute="bottom" constant="50" id="Vt2-Wl-A33"/>
+                            <constraint firstItem="HpP-hG-lPi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WBH-dZ-VhQ"/>
+                            <constraint firstItem="djZ-E4-Fxp" firstAttribute="top" secondItem="QeL-6e-pJ6" secondAttribute="bottom" constant="50" id="Yzu-6j-3Dh"/>
+                            <constraint firstItem="QeL-6e-pJ6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fke-BW-AiJ"/>
+                            <constraint firstItem="e8d-ka-DA2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q8b-Nf-KXb"/>
+                            <constraint firstItem="QeL-6e-pJ6" firstAttribute="top" secondItem="HpP-hG-lPi" secondAttribute="bottom" constant="50" id="w7X-Ba-LB5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="114" y="38"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -40,12 +40,12 @@ class APIService {
                 return
             }
 
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Model.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
             
-            completionHandler(true, output.result)
+            completionHandler(true, output.data)
         }.resume()
     }
     
@@ -84,12 +84,12 @@ class APIService {
                 return
             }
 
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Model.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
             
-            completionHandler(true, output.result)
+            completionHandler(true, output.data)
         }.resume()
     }
 
@@ -123,12 +123,12 @@ class APIService {
                 return
             }
 
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Model.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
             
-            completionHandler(true, output.result)
+            completionHandler(true, output.data)
         }.resume()
     }
     
@@ -159,12 +159,12 @@ class APIService {
                 return
             }
 
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Model.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
             
-            completionHandler(true, output.result)
+            completionHandler(true, output.data)
         }.resume()
     }
     
@@ -195,12 +195,12 @@ class APIService {
                 return
             }
 
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Model.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
             
-            completionHandler(true, output.result)
+            completionHandler(true, output.data)
         }.resume()
     }
     
@@ -249,24 +249,24 @@ class APIService {
 
         
         let defaultSession = URLSession(configuration: .default)
-        
         defaultSession.uploadTask(with: request, from: uploadData) { (data: Data?, response: URLResponse?, error: Error?) in
             guard error == nil else {
                 print("Error occur: error calling POST - \(String(describing: error))")
                 return
             }
 
+            
             guard let data = data, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
                 print("Error: HTTP request failed")
                 return
             }
 
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let output = try? JSONDecoder().decode(Model.self, from: data) else {
                 print("Error: JSON data parsing failed")
                 return
             }
             
-            completionHandler(true, output.result)
+            completionHandler(true, output.data)
         }.resume()
     }
     
