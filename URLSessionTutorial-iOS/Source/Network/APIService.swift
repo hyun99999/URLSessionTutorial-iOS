@@ -133,8 +133,8 @@ class APIService {
     }
     
     // POST - URLSessionDataTask
-    func requestPOSTWithURLSessionDataTask(url: String, param: [String : Any], completionHandler: @escaping (Bool, Any) -> Void) {
-        let requestBody = try! JSONSerialization.data(withJSONObject: param, options: [])
+    func requestPOSTWithURLSessionDataTask(url: String, parameters: [String : Any], completionHandler: @escaping (Bool, Any) -> Void) {
+        let requestBody = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         
         guard let url = URL(string: url) else {
             print("Error: cannot create URL")
@@ -150,7 +150,7 @@ class APIService {
         
         defaultSession.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
             guard error == nil else {
-                print("Error occur: error calling GET - \(String(describing: error))")
+                print("Error occur: error calling POST - \(String(describing: error))")
                 return
             }
 
@@ -169,8 +169,8 @@ class APIService {
     }
     
     // POST - URLSessionUploadTask
-    func requestPOSTWithURLSessionUploadTask(url: String, param: [String : Any], completionHandler: @escaping (Bool, Any) -> Void) {
-        let uploadData = try! JSONSerialization.data(withJSONObject: param, options: [])
+    func requestPOSTWithURLSessionUploadTask(url: String, parameters: [String : String], completionHandler: @escaping (Bool, Any) -> Void) {
+        let uploadData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         
         guard let url = URL(string: url) else {
             print("Error: cannot create URL")
@@ -180,13 +180,13 @@ class APIService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        // request.httpBody = requestBody
+        // request.httpBody = uploadData
         
         let defaultSession = URLSession(configuration: .default)
         
         defaultSession.uploadTask(with: request, from: uploadData) { (data: Data?, response: URLResponse?, error: Error?) in
             guard error == nil else {
-                print("Error occur: error calling GET - \(String(describing: error))")
+                print("Error occur: error calling POST - \(String(describing: error))")
                 return
             }
 
@@ -202,5 +202,76 @@ class APIService {
             
             completionHandler(true, output.result)
         }.resume()
+    }
+    
+    
+    // POST - Image 송신
+    // data : UIImage 를 pngData() 혹은 jpegData() 사용해서 Data 로 변환한 것.
+    // filename : 파일이름(img.jpg 과 같은 이름)
+    // mimeType :  타입에 맞게 png면 image/png, text text/plain 등 타입.
+    func requestPOSTWithMultipartform(url: String,
+                                      parameters: [String : String],
+                                      data: Data,
+                                      filename: String,
+                                      mimeType: String,
+                                      completionHandler: @escaping (Bool, Any) -> Void) {
+        
+        guard let url = URL(string: url) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        // boundary 설정
+        let boundary = "Boundary-\(UUID().uuidString)"
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        // request.httpBody = uploadData
+        
+        // data
+        var uploadData = Data()
+        let imgDataKey = "img"
+        let boundaryPrefix = "--\(boundary)\r\n"
+        
+        for (key, value) in parameters {
+            uploadData.append(boundaryPrefix.data(using: .utf8)!)
+            uploadData.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
+            uploadData.append("\(value)\r\n".data(using: .utf8)!)
+        }
+        
+        uploadData.append(boundaryPrefix.data(using: .utf8)!)
+        uploadData.append("Content-Disposition: form-data; name=\"\(imgDataKey)\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        uploadData.append("Content-Type: \(mimeType)\r\n\r\n".data(using: .utf8)!)
+        uploadData.append(data)
+        uploadData.append("\r\n".data(using: .utf8)!)
+        uploadData.append("--\(boundary)--".data(using: .utf8)!)
+
+        
+        let defaultSession = URLSession(configuration: .default)
+        
+        defaultSession.uploadTask(with: request, from: uploadData) { (data: Data?, response: URLResponse?, error: Error?) in
+            guard error == nil else {
+                print("Error occur: error calling POST - \(String(describing: error))")
+                return
+            }
+
+            guard let data = data, let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                return
+            }
+
+            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+                print("Error: JSON data parsing failed")
+                return
+            }
+            
+            completionHandler(true, output.result)
+        }.resume()
+    }
+    
+    // POST - Image 수신
+    func requestPOSTWithURLSessionDownloadTask(url: String, parameters: [String : String], completionHandler: @escaping (Bool, Any) -> Void) {
+        
     }
 }
